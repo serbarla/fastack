@@ -1,0 +1,4 @@
+# Dev/CI image: Bun + git for Nx commands (affected needs git)
+FROM oven/bun:1-alpine
+RUN apk add --no-cache git
+WORKDIR /app
