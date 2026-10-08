@@ -1,0 +1,7 @@
+.git
+node_modules
+specs
+*.log
+Dockerfile
+docker-compose.yml
+.dockerignore

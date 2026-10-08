@@ -1,0 +1,18 @@
+{
+  "name": "notapp",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "bun run --watch apps/api/src/index.ts",
+    "start": "bun apps/api/src/index.ts",
+    "build": "nx run-many -t build",
+    "test": "nx run-many -t test"
+  },
+  "devDependencies": {
+    "nx": "23.3.0",
+    "@nx/docker": "23.3.0"
+  }
+}
