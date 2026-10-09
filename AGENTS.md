@@ -10,7 +10,7 @@ Guidance for AI agents working in this repository.
 
 - `apps/api` — `@notapp/api` (private). HTTP server via `Bun.serve` in `src/index.ts`. Endpoints: `GET /` (`hello, <name>`, optional `?name=`), `GET /health` (JSON from core), 404 otherwise. Port from `$PORT`, default 3000.
 - `packages/core` — `@notapp/core`. Shared library; currently `HealthPayload` + `healthPayload()`. Consumed by api via `"@notapp/core": "workspace:*"`.
-- `specs/` — empty placeholder.
+- `specs/` — spec files `NNNN-slug.md` (`NNNN` = highest existing + 1, zero-padded; first is `0001`). Copy `specs/TEMPLATE.md`; delete its italic instruction lines when filling in.
 - Root: `nx.json` (target defaults: `build`/`test` cached, `build` depends on `^build`, `dev` continuous; `@nx/docker` plugin registered), `docker-compose.yml`, `Dockerfile` (prod), `Dockerfile.dev` (Bun + git for Nx).
 
 ## Commands
@@ -38,6 +38,7 @@ Regenerate `bun.lock` inside the container to match the image's Bun version:
 - Tests use `bun:test` (`import { expect, test } from "bun:test"`) colocated as `src/*.test.ts`.
 - Nx infers targets from package.json scripts; add scripts, don't hand-edit `nx.json` targets.
 - Nx cache lives in `.nx/cache` (gitignored). Don't commit build outputs (`dist/`).
+- Every feature/fix runs from a spec in `specs/`: objectives → no-go → testing criteria. The agent MUST read the nearest `AGENTS.md` for every file it changes, plus every `AGENTS.md` up to the repo root; nearest wins on conflict. The agent NEVER improvises outside the spec's objectives.
 
 ## Testing policy
 
